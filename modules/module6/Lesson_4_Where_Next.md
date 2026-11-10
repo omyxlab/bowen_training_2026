@@ -52,6 +52,14 @@ If you enjoyed this, **Bioinformatic Fridays** is the natural next step. It is a
 
 **<https://github.com/omyxlab/Bioinformatic_Fridays>**
 
+### Join the class
+
+Bioinformatic Fridays is also a **live weekly class**. It meets **every Friday from 12:00 to 14:00, in person at Covenant University**, and a **new cohort has just started**.
+
+The team is considering an **online option**, so that people who cannot come to Covenant University can take part too. **If you would like to join, or you would be interested in an online class, please let us know** by emailing **bioinformaticsfridays@gmail.com**.
+
+### The materials
+
 Its modules follow on directly from what you have done:
 
 | Module | What it covers |
