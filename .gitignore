@@ -1,0 +1,25 @@
+# Large files are shared separately (USB, shared folder, JupyterHub), not through Git.
+# Only the README and the checksum list in data/ are tracked.
+data/*
+!data/README.md
+!data/SHA256SUMS.txt
+
+# The main training data (published on Zenodo)
+Training/
+training.tar.gz
+
+# Internal planning files, drafts, generated documents and the private capstone answer key.
+# Everything that is not part of the public course lives here. Never publish.
+internal/
+private/
+
+# Generated documents
+*.pdf
+*.docx
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
