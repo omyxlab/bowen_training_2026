@@ -74,6 +74,17 @@ The schedule for the three days, with the sessions and trainers, is in **[Progra
 - [Command cheat sheet](modules/reference/Command_Cheat_Sheet.md): every command in the course on one page
 - [Capstone: a second look at the Ebola sample](capstone/README.md): the take-home project
 
+## Using the JupyterHub (a few participants)
+
+Most participants work on their own laptops (Windows with WSL, Mac or Linux). A few are given a login to a JupyterHub server at **training.omyxlab.com**. If that is you:
+
+- You are given a **username**. The **password you set the first time you log in becomes your password**, so choose one you will remember.
+- The `bioinfo` environment is **already built and shared**, and Krona's taxonomy (`ktUpdateTaxonomy.sh`) is **already updated**. You cannot change the environment. Just run `conda activate bioinfo`.
+- The `Training` folder and the cassava genome (`GCF_001659605.2_M.esculenta_v8_genomic.fna.gz`) are in your **home folder**. The Kraken2 viral database is at **`/opt/kraken_db/viral`**.
+- **Do not** run `conda create`, `conda install`, `ktUpdateTaxonomy.sh`, `sudo`, or any download of the training data, cassava genome or Kraken2 database. Skip Parts 2 to 8 of Module 0.
+
+[Part 11 of the Getting Started guide](modules/module0/Getting_Started.md) has the full list, and each lesson that differs on the hub (2.2, 5.2, 5.3, 5.4) has its own box.
+
 ## Training data
 
 The data are published on Zenodo: <https://zenodo.org/records/24057548> (`training.tar.gz`, about 90 MB). Module 0 explains how to download and unpack them. Once unpacked you will have a `Training` folder:
@@ -84,7 +95,7 @@ The data are published on Zenodo: <https://zenodo.org/records/24057548> (`traini
 | `Training/long_reads/` | Oxford Nanopore reads from cassava (`barcode57`, `barcode58`, `sample3`) |
 | `Training/short_reads/unpaired/` | 16S amplicon reads from a gut microbiome study (not used in the main analysis) |
 
-Two larger files are used in Module 5 and are provided separately: the cassava reference genome (about 190 MB) and the Kraken2 viral database (about 590 MB).
+Two larger files are used in Module 5 and are provided separately: the cassava reference genome (about 190 MB) and the Kraken2 viral database (about 590 MB). If you are working on your own computer you can download the cassava genome yourself with `wget -c https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/659/605/GCF_001659605.2_M.esculenta_v8/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz`, as shown in Lesson 5.2.
 
 The data themselves are not stored in this repository.
 

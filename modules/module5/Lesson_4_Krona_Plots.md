@@ -7,6 +7,7 @@
 - The `bioinfo` environment active
 - `~/cassava_project/kraken/barcode58.report`, `barcode57.report` and `sample3.report` (Lesson 5.3)
 - A web browser
+- Krona's taxonomy database updated, **if you are on your own computer** (see "Before you start")
 
 ## What you will learn
 
@@ -25,6 +26,20 @@ A Kraken2 report is accurate but hard to take in. Looking at columns of numbers,
 **Krona** draws the classification as a set of **concentric rings**, like a multi-layered pie chart. The centre is the whole sample; each ring outwards is a finer level of classification (from kingdom to species). The size of each slice is the number of reads. The chart is **interactive**: you click a slice to zoom in, and hover to see exact counts.
 
 It is also a good way to **share results** with someone who does not use a terminal: a single HTML file that opens in any browser.
+
+## Before you start: update Krona's taxonomy (own computer only)
+
+Krona keeps its own copy of the NCBI taxonomy, the list of organisms and how they are related. On a fresh installation this copy has not been filled in yet. That is the reason Krona printed a message about updating its taxonomy databases when it was installed in Lesson 2.2. It is a **one-off** step.
+
+- **Windows with WSL, Mac or Linux (your own computer):** with the `bioinfo` environment active and an internet connection, run:
+
+  ```
+  $ ktUpdateTaxonomy.sh
+  ```
+
+  It downloads the NCBI taxonomy and builds Krona's copy. This takes a few minutes and prints progress as it goes. Wait for your prompt to return. If you already ran it as part of [Module 0](../module0/Getting_Started.md), you do not need to run it again.
+
+- **JupyterHub (training.omyxlab.com):** the trainers have **already done this** for the shared `bioinfo` environment. **Do not run `ktUpdateTaxonomy.sh`.** Go straight to Step 1.
 
 ## Step 1: Convert the report
 
@@ -76,8 +91,6 @@ $ ls -lh kraken/barcode58.krona.html
 ```
 
 A 224 KB file. It contains everything it needs, so it works **offline** and you can email it or put it on a USB drive.
-
-> **A message you may have seen earlier.** When Krona was installed in Lesson 2.2, it printed a message about updating its taxonomy databases. That is only needed for a different Krona tool (`ktImportTaxonomy`). The `ktImportText` tool we use here works without it.
 
 ## Step 3: Open the chart
 
@@ -153,7 +166,8 @@ A picture makes the difference between the samples obvious, in a way the numbers
 | The chart is blank | The browser blocked scripts, or the file did not finish | Try another browser; rerun `ktImportText` |
 | You see only a grey circle | Everything is "Unclassified" | Click `Viruses`; if it does not exist, the report has no classified reads |
 | The file will not open on the JupyterHub | The hub's viewer does not run scripts | Download the file and open it on your own computer |
-| Krona's message about updating taxonomy | A message from installation | Ignore it; not needed for `ktImportText` |
+| A message about updating Krona's taxonomy | The taxonomy update has not been run on this computer | On your own computer, run `ktUpdateTaxonomy.sh` once (see "Before you start"). On the JupyterHub it is already done: tell a trainer |
+| `ktUpdateTaxonomy.sh` stops with a download error | The connection dropped | Check your internet connection and run it again |
 
 ## Practice check
 

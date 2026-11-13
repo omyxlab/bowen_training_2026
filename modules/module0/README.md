@@ -8,6 +8,8 @@ This module gets your own computer ready for the course. You install a Linux ter
 
 If your computer cannot run what is needed, or you get stuck, do not worry: a temporary online login with everything already installed is available. See Part 1 of the guide.
 
+**Using the JupyterHub (training.omyxlab.com)?** You do not need Parts 2 to 8. The trainers have already set up the `bioinfo` environment, Krona's taxonomy, the `Training` folder, the cassava genome and the Kraken2 viral database. Read **Part 11** of the guide for your login details and the commands you should not run on the server.
+
 ## Learning objectives
 
 By the end of this module you will have:
@@ -15,14 +17,14 @@ By the end of this module you will have:
 - Checked whether WSL (Windows Subsystem for Linux) is installed on your Windows computer
 - Installed Ubuntu and opened your first terminal
 - Installed Miniforge, which provides Conda
-- Created the `bioinfo` environment with the course tools
+- Created the `bioinfo` environment with the course tools, and updated Krona's taxonomy
 - Downloaded and unpacked the training data
 
 ## Guide
 
 | File | What it covers |
 |---|---|
-| [Getting_Started.md](Getting_Started.md) | Step-by-step instructions for Windows, Mac and Linux, a final check, and troubleshooting |
+| [Getting_Started.md](Getting_Started.md) | Step-by-step instructions for Windows, Mac and Linux, a final check, troubleshooting, and notes for JupyterHub users (Part 11) |
 
 ## Before you begin
 

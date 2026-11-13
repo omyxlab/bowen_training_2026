@@ -71,6 +71,8 @@ These are all useful, and you will be ready for them afterwards. Doing less, pro
 
 All the data you need is in the `Training` folder you downloaded in [Module 0](../module0/Getting_Started.md).
 
+> **Using the JupyterHub (training.omyxlab.com)?** The `Training` folder is **already in your home folder**, so there is nothing to download or unpack. Your `bioinfo` environment is also ready, and you cannot change it. Please read [Part 11 of the Getting Started guide](../module0/Getting_Started.md) for a short list of commands **not** to run on the server.
+
 | Folder or file | What it is | Technology |
 |---|---|---|
 | `short_reads/paired/SRR1553607_1.fastq` and `_2.fastq` | Reads from the Ebola virus patient sample (the main dataset) | Illumina, paired-end |

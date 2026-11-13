@@ -57,6 +57,8 @@ cd cassava_project
 
 Put the cassava genome in `reference/` and the Kraken2 database in `~/databases/kraken2_viral`, as your trainers explained in Lessons 5.2 and 5.3.
 
+> **On the JupyterHub (training.omyxlab.com)?** Copy the genome from your home folder with `cp ~/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz reference/`, and make the shortcut to the database with `mkdir -p ~/databases` and `ln -s /opt/kraken_db/viral ~/databases/kraken2_viral` (skip this if you made it in Lesson 5.3). Do not download either one.
+
 **Quality control (Lesson 5.1)**
 
 ```

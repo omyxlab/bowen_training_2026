@@ -6,7 +6,7 @@
 
 - The `bioinfo` environment active
 - `~/cassava_project/raw/barcode57.fastq` and `barcode58.fastq` (Lesson 5.1)
-- The **cassava reference genome**, from your trainers (see Step 1)
+- The **cassava reference genome**, from your trainers (see Step 1). On the JupyterHub it is already in your home folder
 - **About 5 GB of free memory** (see Step 2)
 
 ## What you will learn
@@ -32,7 +32,7 @@ all reads  ->  map to the cassava genome  ->  mapped reads: host (discard)
 
 ## Step 1: Get the cassava reference genome
 
-We use the NCBI RefSeq genome of cassava (*Manihot esculenta*), assembly `GCF_001659605.2`. It is large: about 190 MB compressed and 640 million bases, in 86 sequences (18 chromosomes and smaller pieces). **Do not download it on the course network.** Your trainers will give it to you (on the JupyterHub, or on a USB drive or a shared folder). Copy the file into your project:
+We use the NCBI RefSeq genome of cassava (*Manihot esculenta*), assembly `GCF_001659605.2`. It is large: about 190 MB compressed and 640 million bases, in 86 sequences (18 chromosomes and smaller pieces). **Do not download it on the course network.** Your trainers will give it to you (on a USB drive or a shared folder, or already in place on the JupyterHub). Copy the file into your project:
 
 ```
 $ cp /path/from/trainers/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz ~/cassava_project/reference/
@@ -41,11 +41,22 @@ total 180M
 -rw-r--r-- 1 yourname yourname 180M Nov 10 23:25 GCF_001659605.2_M.esculenta_v8_genomic.fna.gz
 ```
 
-(Ask your trainers for the correct path. On the JupyterHub the file is already in place.) If you are working at home on a good connection, you can download it yourself:
+(Ask your trainers for the correct path.)
+
+> **Using the JupyterHub (training.omyxlab.com)?** The cassava genome is **already in your home folder**, under the name `GCF_001659605.2_M.esculenta_v8_genomic.fna.gz`. **Do not download it.** Copy it into your project like this:
+>
+> ```
+> $ cp ~/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz ~/cassava_project/reference/
+> $ ls -lh ~/cassava_project/reference
+> ```
+>
+> The listing should show the same 180M file as above. Then carry on with Step 2.
+
+If you are working at home on a good connection, you can download it yourself. The `-c` option lets `wget` carry on from where it stopped if the connection drops:
 
 ```
 $ cd ~/cassava_project/reference
-$ wget "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/659/605/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz"
+$ wget -c https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/001/659/605/GCF_001659605.2_M.esculenta_v8/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz
 $ ls -l
 ```
 

@@ -40,7 +40,7 @@ At the end you will have a project folder, `~/ebola_project/raw/`, holding your 
 
 ## Before you start
 
-Complete [Module 0](../module0/README.md) and read [Module 1](../module1/README.md). You need a working terminal and the `Training` folder.
+Complete [Module 0](../module0/README.md) and read [Module 1](../module1/README.md). You need a working terminal and the `Training` folder. (On the JupyterHub, `Training` is already in your home folder, and the `bioinfo` environment is already built.)
 
 ## What comes next
 

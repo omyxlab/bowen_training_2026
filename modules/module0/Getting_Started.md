@@ -17,7 +17,7 @@ Tick each box as you finish it.
 - [ ] Part 4: I installed Ubuntu and can open it
 - [ ] Part 5: I updated Ubuntu
 - [ ] Part 6: I installed Miniforge (Conda)
-- [ ] Part 7: I created the `bioinfo` environment
+- [ ] Part 7: I created the `bioinfo` environment and updated Krona's taxonomy
 - [ ] Part 8: I downloaded the training data and ran the final check
 
 ---
@@ -29,7 +29,7 @@ Tick each box as you finish it.
 | **Windows 10 or 11 laptop** | Follow this whole guide (Route A: WSL). |
 | **Mac** | Skip to **Part 10 (Mac users)**. |
 | **Linux computer** | You already have a terminal. Start at Part 6. |
-| **Windows computer that cannot run WSL**, or you get stuck | No problem. On Day 1, 08:00–09:00, we will give you a temporary login to an online system (JupyterHub) that already has everything installed. Tell a trainer when you arrive. The login works only for the duration of the training. |
+| **Windows computer that cannot run WSL**, or you get stuck | No problem. On Day 1, 08:00–09:00, we will give you a temporary login to an online system (JupyterHub, at `training.omyxlab.com`) that already has everything installed. Tell a trainer when you arrive. The login works only for the duration of the training. **Read Part 11 (JupyterHub users) when you get it.** |
 
 **What is WSL?** WSL stands for *Windows Subsystem for Linux*. It lets a Windows computer run a real Linux system (called Ubuntu) inside a normal window, without wiping or changing Windows. You can remove it later if you want.
 
@@ -313,6 +313,16 @@ samtools --version | head -1
 
 You should see version numbers (for example `seqkit v2.x.x` and `samtools 1.x`). The exact numbers do not matter.
 
+### 7.4 Update Krona's taxonomy
+
+Krona, one of the tools you just installed, keeps its own copy of the NCBI taxonomy (the list of organisms and how they are related). On a new installation this has not been filled in yet, which is what the "You still need to manually update the taxonomy databases" message near the end of the installation was telling you. Do it now, **once**, with `(bioinfo)` showing in your prompt and an internet connection:
+
+```
+ktUpdateTaxonomy.sh
+```
+
+It downloads the taxonomy and builds Krona's copy. This takes a few minutes, and it prints progress as it goes. Wait for your prompt to return. We use Krona on Day 2.
+
 ---
 
 ## Part 8: Download the training data
@@ -371,7 +381,7 @@ long_reads  short_reads
 
 If you see these, you are done with the data.
 
-> **Two larger files** (a virus database and a cassava genome) will be used on Day 2. **Do not download them.** We will give them to you separately.
+> **Two larger files** (a virus database and a cassava genome) will be used on Day 2. **Do not download them.** We will give them to you separately. (On the JupyterHub they are already in place; see Part 11.)
 
 ---
 
@@ -452,8 +462,54 @@ Your Mac already has a terminal, so you do not need WSL.
 
    Answer the questions as described in Part 6.3 (accept the licence, accept the default location, answer `yes` to initialising).
 4. Close Terminal and open it again. Your prompt should begin with `(base)`.
-5. Continue with **Part 7** (create the environment) and **Part 8** (download the data) exactly as written above. Wherever it says "Ubuntu", read "Terminal". Where it says "Option 2", your Downloads folder is `~/Downloads`, so the copy command is `cp ~/Downloads/training.tar.gz ~/`.
+5. Continue with **Part 7** (create the environment and update Krona's taxonomy) and **Part 8** (download the data) exactly as written above. Wherever it says "Ubuntu", read "Terminal". Where it says "Option 2", your Downloads folder is `~/Downloads`, so the copy command is `cp ~/Downloads/training.tar.gz ~/`.
 
-Some of the tools may not be available for every Mac chip. If the environment fails to create, tell a trainer on Day 1 and we will give you a JupyterHub login.
+Some of the tools may not be available for every Mac chip. If the environment fails to create, tell a trainer on Day 1 and we will give you a JupyterHub login (see Part 11).
+
+---
+
+## Part 11: JupyterHub users (training.omyxlab.com)
+
+**This part is only for the few people who are given a JupyterHub login.** If you set up Ubuntu (WSL), a Mac or a Linux computer yourself, skip it. The rest of this guide, Parts 2 to 8, does not apply to you: the trainers have already done that work on the server.
+
+### Your login
+
+- The trainers give you a **username**.
+- The **password you type the first time you log in becomes your password** from then on. Choose one you will remember, and do not share it.
+- Open a terminal from the Launcher (or **File > New > Terminal**). Every lesson says "terminal"; this is it.
+- The login works only for the duration of the training.
+
+### What is already there for you
+
+| What | Where | Notes |
+|---|---|---|
+| The `bioinfo` environment, with every tool | Already built | Shared, so you **cannot change it**. Just run `conda activate bioinfo` in each new terminal |
+| Krona's taxonomy | Already updated | `ktUpdateTaxonomy.sh` has been run for you |
+| The training data | The `Training` folder in your home folder, `~/Training` | Already unpacked |
+| The cassava genome | `GCF_001659605.2_M.esculenta_v8_genomic.fna.gz`, in your home folder | Used in Lesson 5.2 |
+| The Kraken2 viral database | `/opt/kraken_db/viral` | Outside your home folder. Lesson 5.3 shows how to make a shortcut to it |
+
+### Commands you should NOT run on the JupyterHub
+
+Everything in this guide that installs or downloads is already done. Running these on the server will fail or waste your time:
+
+- **Do not** follow Parts 2 to 8 of this guide, and do not install Ubuntu or Miniforge
+- **Do not** run `conda create`, `conda install`, `conda remove` or `conda env remove`
+- **Do not** run `ktUpdateTaxonomy.sh`
+- **Do not** run `sudo` for anything
+- **Do not** download `training.tar.gz`, the cassava genome or the Kraken2 database, and do not unpack any `.tar.gz` file for them
+- **Do not** run `wsl` or `explorer.exe` commands, or use the `\\wsl$` paths: those are for Windows laptops
+
+### The same course, with a few differences
+
+| In the lessons | On the JupyterHub |
+|---|---|
+| Lesson 2.2: build or verify the environment | Follow **Path A** only. Skip Path B |
+| Lesson 5.2: copy the cassava genome from your trainers | `cp ~/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz ~/cassava_project/reference/` |
+| Lesson 5.3: get the Kraken2 database | `mkdir -p ~/databases` then `ln -s /opt/kraken_db/viral ~/databases/kraken2_viral`. Nothing to download |
+| Lesson 5.4: update Krona's taxonomy | Already done. Skip it |
+| Opening HTML reports (FastQC, NanoPlot, Krona) | Use the file browser on the left. If the page will not display, download the file and open it on your own computer |
+
+Everything else, including every `~/Training/...` path, works exactly as written.
 
 ---

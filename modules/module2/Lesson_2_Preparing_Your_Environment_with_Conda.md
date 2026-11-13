@@ -7,6 +7,7 @@
 - A terminal open
 - Miniforge installed (from [Module 0](../module0/Getting_Started.md))
 - An internet connection, **if** you still need to build the environment
+- On the **JupyterHub**, nothing to install: the environment is already built (see the box under Step 1)
 
 ## What you will learn
 
@@ -62,7 +63,15 @@ The `*` marks the environment you are using right now. Your prompt probably begi
 
 - If you see a line starting with **`bioinfo`**, you built the environment before the course. Go to **Path A: Verify**.
 - If you see only `base` (and maybe others, but not `bioinfo`), you need to create it. Go to **Path B: Create**.
-- If you are on the **JupyterHub**, the environment is already built. Follow **Path A**.
+- If you are on the **JupyterHub**, the environment is already built. Follow **Path A**, and read the box below first.
+
+> **Using the JupyterHub (training.omyxlab.com)?** Please note:
+>
+> - The `bioinfo` environment has **already been created for you**, with every tool, and Krona's taxonomy has **already been updated** (the `ktUpdateTaxonomy.sh` step). It is shared, so **you cannot change it**.
+> - **Do not run** `conda create`, `conda install`, `conda remove` or `conda env remove`, and **do not run** `ktUpdateTaxonomy.sh`. They will fail, or worse, they will not do what you expect. Skip Path B completely.
+> - You still need to **activate** the environment in each new terminal window: `conda activate bioinfo`.
+> - The paths printed on the hub (for example in `which`) will look different from the ones in this lesson. That is fine: look for `bioinfo` in the path.
+> - Your username and first password are given to you by the trainers. The password you set the first time you log in becomes your password from then on, so **choose one you will remember**.
 
 ## Path A: Verify the environment you already have
 
@@ -119,9 +128,16 @@ Here is what each part does:
 
 How long it takes depends almost entirely on your internet connection: a few minutes on a fast one, up to half an hour on a slow one. **This is the part that can run in the background**: start it, then take a break. Do not close the terminal until the prompt returns.
 
-### A message you can ignore
+### One more step: update Krona's taxonomy
 
-Near the end, Krona prints a message that begins "Krona installed. You still need to manually update the taxonomy databases...". **You can ignore this.** The Krona tool we use later does not need that database.
+Near the end, Krona prints a message that begins "Krona installed. You still need to manually update the taxonomy databases...". On your own computer, do this **once**, now that the environment exists (it needs the internet and takes a few minutes):
+
+```
+$ conda activate bioinfo
+$ ktUpdateTaxonomy.sh
+```
+
+Wait for your prompt to return. (On the JupyterHub this has already been done for you; do not run it there.) If you do it now, you will not need to think about it again in Lesson 5.4.
 
 ### If it fails
 

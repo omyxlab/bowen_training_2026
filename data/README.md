@@ -22,6 +22,19 @@ The main training data (`training.tar.gz`, about 90 MB) are separate. They are p
 
 Total: about 833 MB.
 
+## On the JupyterHub (training.omyxlab.com)
+
+The server is already set up, so participants there copy and download nothing:
+
+| What | Where on the hub |
+|---|---|
+| Training data | `~/Training` (already unpacked) |
+| Cassava genome | `~/GCF_001659605.2_M.esculenta_v8_genomic.fna.gz` |
+| Kraken2 viral database | `/opt/kraken_db/viral` (participants make a shortcut: `mkdir -p ~/databases` then `ln -s /opt/kraken_db/viral ~/databases/kraken2_viral`) |
+| `bioinfo` environment | Built and shared; participants only activate it. Krona's taxonomy is already updated |
+
+The rest of this README is for people setting up their own computer or sharing the files by USB drive.
+
 ## Using the files
 
 ### Cassava genome (Lesson 5.2)

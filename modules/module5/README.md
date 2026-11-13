@@ -32,7 +32,7 @@ By the end of this module you will be able to:
 
 - `Training/long_reads/barcode57.fastq` and `barcode58.fastq`: Nanopore reads from cassava samples
 - `Training/long_reads/sample3.fastq`: a third Nanopore sample
-- **Two large files supplied by your trainers**: the cassava reference genome (about 190 MB) and the Kraken2 viral database (about 590 MB). Lesson 5.2 and 5.3 explain where to get them.
+- **Two large files supplied by your trainers**: the cassava reference genome (about 190 MB) and the Kraken2 viral database (about 590 MB). Lesson 5.2 and 5.3 explain where to get them. **On the JupyterHub (training.omyxlab.com) both are already there:** the cassava genome is in your home folder as `GCF_001659605.2_M.esculenta_v8_genomic.fna.gz`, and the Kraken2 viral database is at `/opt/kraken_db/viral`. Do not download them. On the hub, Krona's taxonomy is also already updated, so skip that step in Lesson 5.4.
 
 ## Tools used
 

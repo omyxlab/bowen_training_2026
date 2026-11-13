@@ -7,7 +7,7 @@
 - The `bioinfo` environment active
 - `~/cassava_project/clean/barcode58_nonhost.fastq` and `barcode57_nonhost.fastq` (Lesson 5.2)
 - `~/Training/long_reads/sample3.fastq`
-- The **Kraken2 viral database**, from your trainers (see Step 1)
+- The **Kraken2 viral database**, from your trainers (see Step 1). On the JupyterHub it is already installed, at `/opt/kraken_db/viral`
 
 ## What you will learn
 
@@ -39,7 +39,16 @@ $ mkdir -p ~/databases/kraken2_viral
 $ tar -xzf k2_viral_20261022.tar.gz -C ~/databases/kraken2_viral
 ```
 
-(`tar -xzf` unpacks a compressed archive. `-C` says which folder to unpack into.) On the JupyterHub the database is already in place.
+(`tar -xzf` unpacks a compressed archive. `-C` says which folder to unpack into.)
+
+> **Using the JupyterHub (training.omyxlab.com)?** The viral database is **already installed for you** at `/opt/kraken_db/viral`. **Do not download it and do not unpack anything.** To keep every command in this course the same for everyone, make a shortcut to it in your home folder:
+>
+> ```
+> $ mkdir -p ~/databases
+> $ ln -s /opt/kraken_db/viral ~/databases/kraken2_viral
+> ```
+>
+> (`ln -s` makes a **shortcut**, called a symbolic link, so `~/databases/kraken2_viral` leads to the real database. Nothing is copied.) Check that it works with the `ls` command below. If you prefer not to make a shortcut, you can instead write `--db /opt/kraken_db/viral` in place of `--db ~/databases/kraken2_viral` in every `kraken2` command.
 
 If you are at home on a good connection, you can download it yourself. The file should be **589,941,425 bytes**:
 
@@ -57,10 +66,10 @@ That is the release available when this course was written. Newer ones are liste
 Check that the database is in place. Kraken2 needs three files, `hash.k2d`, `opts.k2d` and `taxo.k2d`:
 
 ```
-$ ls -lh ~/databases/kraken2_viral | head -n 20
+$ ls -lh ~/databases/kraken2_viral/ | head -n 20
 ```
 
-You should see these three among the files, with `hash.k2d` about 634 MB.
+You should see these three among the files, with `hash.k2d` about 634 MB. (The `/` at the end matters if you made a shortcut: without it, `ls` shows the shortcut itself instead of what is inside.)
 
 ## Step 2: Classify
 
@@ -226,7 +235,7 @@ What the result does tell us is that the viral part of the sample is dominated b
 | What you see | What it means | What to do |
 |---|---|---|
 | `kraken2: command not found` | The environment is not active | `conda activate bioinfo` |
-| `kraken2: database ("...") does not contain necessary file taxo.k2d` | The database path is wrong, or it is incomplete | Check `ls ~/databases/kraken2_viral` for `hash.k2d`, `opts.k2d`, `taxo.k2d` |
+| `kraken2: database ("...") does not contain necessary file taxo.k2d` | The database path is wrong, or it is incomplete | Check `ls ~/databases/kraken2_viral/` for `hash.k2d`, `opts.k2d`, `taxo.k2d`. On the JupyterHub, also check `ls /opt/kraken_db/viral`; if your shortcut is wrong, delete it with `rm ~/databases/kraken2_viral` (no `/` at the end) and make it again |
 | `Loading database information...` then nothing | It is loading about 640 MB; wait a few seconds | Wait |
 | `Killed` or out of memory | Too little memory | The viral database needs about 1 GB; close other programs |
 | Everything unclassified | The wrong database, or the wrong reads | Check the database name and that the FASTQ is not empty |
