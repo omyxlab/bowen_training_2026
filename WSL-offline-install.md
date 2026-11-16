@@ -267,6 +267,8 @@ Verify the size and checksum of each copy (`sha256sum` on Linux, `Get-FileHash` 
 
 A Windows drive appears in WSL under `/mnt`. A USB drive that is `D:` in Windows is `/mnt/d` in Ubuntu. Adjust the letter to match the drive.
 
+>Download the packed env from [here](https://drive.google.com/file/d/1HqF1NHQMKzdyVG-le3og016Q8sPl9NYO/view?usp=sharing) or https://drive.google.com/file/d/1HqF1NHQMKzdyVG-le3og016Q8sPl9NYO/view?usp=sharing
+
 **1. Unpack the environment:**
 
 ```bash
@@ -279,6 +281,8 @@ conda-unpack
 `conda-unpack` fixes the file paths inside the environment so it works from its new location. Run it **once**, right after unpacking.
 
 **2. Unpack the Kraken2 viral database:**
+
+This database is currently not included in the packed environment. it is oly about 500 MB and can be downloaded during a break.
 
 ```bash
 mkdir -p ~/kraken_db/viral
